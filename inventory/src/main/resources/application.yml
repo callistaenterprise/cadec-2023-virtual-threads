@@ -1,0 +1,16 @@
+server:
+  port: 9090
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/inventory
+    username: admin
+    password: secret
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  liquibase:
+    enabled: true
+    changeLog: classpath:db/changelog/db.changelog.yml
+inventory:
+  delay: 1ms

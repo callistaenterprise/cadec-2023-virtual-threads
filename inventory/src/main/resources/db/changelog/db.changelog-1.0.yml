@@ -1,0 +1,53 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: inventory
+      author: beskow
+      changes:
+        - createSequence:
+            dbms: postgres
+            sequenceName: inventory_seq
+            startValue: 100000
+            incrementBy: 50
+        - createTable:
+            tableName: inventory
+            columns:
+              - column:
+                  name: sku
+                  type: VARCHAR(255)
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: inventory_pkey
+              - column:
+                  name: version
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+                  defaultValueNumeric: 0
+              - column:
+                  name: stock
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tenant_id
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: inventory_test_data
+      author: beskow
+      changes:
+        - insert:
+            tableName: inventory
+            columns:
+              - column:
+                  name: sku
+                  value: cadec2023
+              - column:
+                  name: stock
+                  value: 2
+              - column:
+                  name: tenant_id
+                  value: callista

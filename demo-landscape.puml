@@ -1,0 +1,21 @@
+@startuml
+
+[LoadTest]
+
+package "Product" {
+  ProductService - [Product]
+}
+
+database "Postgres" as postgres1 {
+  [Products]
+}
+
+package "Inventory" {
+  InventoryService - [Inventory]
+}
+
+[Product] --> [Products]
+[Product] --> [InventoryService]
+[ProductService] <-left- [LoadTest]
+
+@enduml

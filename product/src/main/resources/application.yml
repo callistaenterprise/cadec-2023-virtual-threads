@@ -1,0 +1,21 @@
+server:
+  port: 8080
+#  tomcat:
+#    threads:
+#      max: 200
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/product
+    username: admin
+    password: secret
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  liquibase:
+    enabled: true
+    changeLog: classpath:db/changelog/db.changelog.yml
+inventory:
+  url: http://localhost:9090/inventory/
+  session:
+    max: 1000
